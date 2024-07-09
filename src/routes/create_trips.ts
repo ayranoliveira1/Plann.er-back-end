@@ -82,9 +82,9 @@ export async function createTrips(app: FastifyInstance) {
             subject: "Plann.er - Confirmação de inscrição",
             html: `
             <div style="font-family: sans-serif; font-size: 16px; line-height: 1.6;">
-              <p>Você foi convidado(a) para participar de uma viagem para <strong>${destination}</strong> nas datas de <strong>${formattedStartDate}</strong> até <strong>${formattedEndDate}</strong>.</p>
+              <p>Você solicitou a criação de uma viagem para <strong>${destination}</strong> nas datas de <strong>${formattedStartDate}</strong> até <strong>${formattedEndDate}</strong>.</p>
               <p></p>
-              <p>Para confirmar sua presença na viagem, clique no link abaixo:</p>
+              <p>Para confirmar sua viagem, clique no link abaixo:</p>
               <p></p>
               <p>
                 <a href="${confirmationLink}">Confirmar viagem</a>
