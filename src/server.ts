@@ -6,6 +6,7 @@ import {
 } from "fastify-type-provider-zod";
 import { comfirmTrips } from "./routes/confirm_trip";
 import fastifyCors from "@fastify/cors";
+import { comfirmParticipant } from "./routes/confirm_participant";
 
 // exportar app com o fastify
 const app = fastify();
@@ -22,6 +23,7 @@ app.setSerializerCompiler(serializerCompiler);
 // registrar as rotas
 app.register(createTrips);
 app.register(comfirmTrips);
+app.register(comfirmParticipant);
 
 // iniciar o servidor
 app.listen({ port: 3333 }).then(() => {
