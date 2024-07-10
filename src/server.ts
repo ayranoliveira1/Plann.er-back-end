@@ -8,6 +8,7 @@ import { comfirmTrips } from "./routes/confirm_trip";
 import fastifyCors from "@fastify/cors";
 import { comfirmParticipant } from "./routes/confirm_participant";
 import { createActivity } from "./routes/create_activity";
+import { getActivity } from "./routes/get_activities";
 
 // exportar app com o fastify
 const app = fastify();
@@ -26,6 +27,7 @@ app.register(createTrips);
 app.register(comfirmTrips);
 app.register(comfirmParticipant);
 app.register(createActivity);
+app.register(getActivity);
 
 // iniciar o servidor
 app.listen({ port: 3333 }).then(() => {

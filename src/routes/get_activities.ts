@@ -3,7 +3,7 @@ import { prisma } from "../lib/prisma";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
 
-export async function createActivity(app: FastifyInstance) {
+export async function getActivity(app: FastifyInstance) {
    app.withTypeProvider<ZodTypeProvider>().get(
       "/trips/:tripId/activities",
       {
