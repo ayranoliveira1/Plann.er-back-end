@@ -10,6 +10,7 @@ import { comfirmParticipant } from "./routes/confirm_participant";
 import { createActivity } from "./routes/create_activity";
 import { getActivity } from "./routes/get_activities";
 import { createLink } from "./routes/create_link";
+import { getLinks } from "./routes/get_links";
 
 // exportar app com o fastify
 const app = fastify();
@@ -30,6 +31,7 @@ app.register(comfirmParticipant);
 app.register(createActivity);
 app.register(getActivity);
 app.register(createLink);
+app.register(getLinks);
 
 // iniciar o servidor
 app.listen({ port: 3333 }).then(() => {
