@@ -14,6 +14,7 @@ import { getLinks } from "./routes/get_links";
 import { getParticipants } from "./routes/get_participants";
 import { createInvite } from "./routes/create_invite";
 import { updateTrips } from "./routes/update_trip";
+import { getTripDetails } from "./routes/get_trip_details";
 
 // exportar app com o fastify
 const app = fastify();
@@ -38,6 +39,7 @@ app.register(getLinks);
 app.register(getParticipants);
 app.register(createInvite);
 app.register(updateTrips);
+app.register(getTripDetails);
 
 // iniciar o servidor
 app.listen({ port: 3333 }).then(() => {
