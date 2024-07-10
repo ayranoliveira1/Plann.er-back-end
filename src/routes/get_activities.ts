@@ -3,6 +3,7 @@ import { prisma } from "../lib/prisma";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
 import dayjs from "dayjs";
+import { ClientError } from "../erros/clientError";
 
 export async function getActivity(app: FastifyInstance) {
    app.withTypeProvider<ZodTypeProvider>().get(
@@ -29,7 +30,7 @@ export async function getActivity(app: FastifyInstance) {
          });
 
          if (!trip) {
-            throw new Error("Trip not found");
+            throw new ClientError("Trip not found");
          }
 
          const differenceInDaysBetweenTripStartAndEnd = dayjs(
