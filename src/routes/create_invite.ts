@@ -6,6 +6,7 @@ import { getMailClinet } from "../lib/mail";
 import dayjs from "dayjs";
 import nodemailer from "nodemailer";
 import { ClientError } from "../erros/clientError";
+import { env } from "../env";
 
 export async function createInvite(app: FastifyInstance) {
    app.withTypeProvider<ZodTypeProvider>().post(
@@ -45,7 +46,7 @@ export async function createInvite(app: FastifyInstance) {
 
          const mail = await getMailClinet();
 
-         const confirmationLink = `http://localhost:3333/participants/${participant.id}/confirm`;
+         const confirmationLink = `${env.API_BASE_URL}/participants/${participant.id}/confirm`;
 
          const message = await mail.sendMail({
             from: {

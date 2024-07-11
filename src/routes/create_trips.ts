@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 import { getMailClinet } from "../lib/mail";
 import nodemailer from "nodemailer";
 import { ClientError } from "../erros/clientError";
+import { env } from "../env";
 
 export async function createTrips(app: FastifyInstance) {
    app.withTypeProvider<ZodTypeProvider>().post(
@@ -67,7 +68,7 @@ export async function createTrips(app: FastifyInstance) {
 
          const formattedEndDate = dayjs(ends_at).format("DD/MM/YYYY");
 
-         const confirmationLink = `http://localhost:3333/trips/${trip.id}/confirm`;
+         const confirmationLink = `${env.API_BASE_URL}/trips/${trip.id}/confirm`;
 
          const email = await getMailClinet();
 
