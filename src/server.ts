@@ -16,6 +16,7 @@ import { createInvite } from "./routes/create_invite";
 import { updateTrips } from "./routes/update_trip";
 import { getTripDetails } from "./routes/get_trip_details";
 import { getParticipant } from "./routes/get_participant";
+import { errorHandler } from "./erros/error-handler";
 
 // exportar app com o fastify
 const app = fastify();
@@ -24,6 +25,8 @@ const app = fastify();
 app.register(fastifyCors, {
    origin: "*",
 });
+
+app.setErrorHandler(errorHandler);
 
 // configurar o validatorCompiler e serializerCompiler
 app.setValidatorCompiler(validatorCompiler);
