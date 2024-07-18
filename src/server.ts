@@ -20,6 +20,7 @@ import { errorHandler } from "./erros/error-handler";
 import { env } from "./env";
 import { deleteActivities } from "./routes/delete_activities";
 import { deleteLink } from "./routes/delete-links";
+import { deleteTrip } from "./routes/delete_trip";
 
 // exportar app com o fastify
 const app = fastify();
@@ -50,6 +51,7 @@ app.register(getTripDetails);
 app.register(getParticipant);
 app.register(deleteActivities);
 app.register(deleteLink);
+app.register(deleteTrip);
 
 // iniciar o servidor
 app.listen({ port: env.PORT }).then(() => {
