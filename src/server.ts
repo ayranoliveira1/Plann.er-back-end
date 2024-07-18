@@ -18,6 +18,7 @@ import { getTripDetails } from "./routes/get_trip_details";
 import { getParticipant } from "./routes/get_participant";
 import { errorHandler } from "./erros/error-handler";
 import { env } from "./env";
+import { deleteActivities } from "./routes/delete_activities";
 
 // exportar app com o fastify
 const app = fastify();
@@ -46,6 +47,7 @@ app.register(createInvite);
 app.register(updateTrips);
 app.register(getTripDetails);
 app.register(getParticipant);
+app.register(deleteActivities);
 
 // iniciar o servidor
 app.listen({ port: env.PORT }).then(() => {
