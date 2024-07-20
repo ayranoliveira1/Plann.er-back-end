@@ -1,30 +1,31 @@
 import fastify from "fastify";
-import { createTrips } from "./routes/create_trips";
 import {
    jsonSchemaTransform,
    serializerCompiler,
    validatorCompiler,
 } from "fastify-type-provider-zod";
-import { comfirmTrips } from "./routes/confirm_trip";
 import fastifyCors from "@fastify/cors";
-import { comfirmParticipant } from "./routes/confirm_participant";
-import { createActivity } from "./routes/create_activity";
-import { getActivity } from "./routes/get_activities";
-import { createLink } from "./routes/create_link";
-import { getLinks } from "./routes/get_links";
-import { getParticipants } from "./routes/get_participants";
-import { createInvite } from "./routes/create_invite";
-import { updateTrips } from "./routes/update_trip";
-import { getTripDetails } from "./routes/get_trip_details";
-import { getParticipant } from "./routes/get_participant";
-import { errorHandler } from "./erros/error-handler";
-import { env } from "./env";
-import { deleteActivities } from "./routes/delete_activities";
-import { deleteLink } from "./routes/delete-links";
-import { deleteTrip } from "./routes/delete_trip";
-import { deleteParticipant } from "./routes/delete_participant";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
+
+import { errorHandler } from "./erros/error-handler";
+import { env } from "./env";
+import { createTrips } from "./routes/trip/create_trips";
+import { comfirmTrips } from "./routes/trip/confirm_trip";
+import { comfirmParticipant } from "./routes/participant/confirm_participant";
+import { createActivity } from "./routes/activity/create_activity";
+import { getActivity } from "./routes/activity/get_activities";
+import { createLink } from "./routes/link/create_link";
+import { getLinks } from "./routes/link/get_links";
+import { getParticipants } from "./routes/participant/get_participants";
+import { createInvite } from "./routes/participant/create_invite";
+import { updateTrips } from "./routes/trip/update_trip";
+import { getTripDetails } from "./routes/trip/get_trip_details";
+import { getParticipant } from "./routes/participant/get_participant";
+import { deleteActivities } from "./routes/activity/delete_activities";
+import { deleteLink } from "./routes/link/delete-links";
+import { deleteTrip } from "./routes/trip/delete_trip";
+import { deleteParticipant } from "./routes/participant/delete_participant";
 
 // exportar app com o fastify
 const app = fastify();

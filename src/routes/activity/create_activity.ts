@@ -1,9 +1,7 @@
 import { FastifyInstance } from "fastify";
-import { prisma } from "../lib/prisma";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
 import dayjs from "dayjs";
-import { ClientError } from "../erros/clientError";
 
 export async function createActivity(app: FastifyInstance) {
    app.withTypeProvider<ZodTypeProvider>().post(
