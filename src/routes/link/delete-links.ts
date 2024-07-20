@@ -1,8 +1,8 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import z from "zod";
-import { prisma } from "../lib/prisma";
-import { ClientError } from "../erros/clientError";
+import { prisma } from "../../lib/prisma";
+import { ClientError } from "../../erros/clientError";
 
 export async function deleteLink(app: FastifyInstance) {
    app.withTypeProvider<ZodTypeProvider>().delete(

@@ -10,6 +10,7 @@ import fastifySwaggerUi from "@fastify/swagger-ui";
 
 import { errorHandler } from "./erros/error-handler";
 import { env } from "./env";
+
 import { createTrips } from "./routes/trip/create_trips";
 import { comfirmTrips } from "./routes/trip/confirm_trip";
 import { comfirmParticipant } from "./routes/participant/confirm_participant";
@@ -70,13 +71,14 @@ app.register(deleteTrip);
 
 // rotas de participante
 app.register(comfirmParticipant);
+app.register(createInvite);
 app.register(getParticipants);
 app.register(getParticipant);
 app.register(deleteParticipant);
 
+// rotas de link
 app.register(createLink);
 app.register(getLinks);
-app.register(createInvite);
 app.register(deleteLink);
 
 // rotas de atividade
@@ -85,6 +87,6 @@ app.register(getActivity);
 app.register(deleteActivities);
 
 // iniciar o servidor
-app.listen({ port: env.PORT }).then(() => {
+app.listen({ port: env.PORT, host: "0.0.0.0" }).then(() => {
    console.log("Server running on port 3333");
 });
