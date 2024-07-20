@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+   postgres:
+      image: bitnami/postgresql:latest
+      container_name: plan.er-api
+      environment:
+         POSTGRES_USER: planner
+         POSTGRES_PASSWORD: planner
+      ports:
+         - "5435:5432"
+      volumes:
+         - ./planner-data:/var/lib/postgresql/data
+
+volumes:
+   planner-data:
