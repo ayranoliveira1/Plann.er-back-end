@@ -65,8 +65,6 @@ app.register(fastifySwaggerUi, {
 app.register(createTrips);
 app.register(comfirmTrips);
 app.register(comfirmParticipant);
-app.register(createActivity);
-app.register(getActivity);
 app.register(createLink);
 app.register(getLinks);
 app.register(getParticipants);
@@ -74,10 +72,14 @@ app.register(createInvite);
 app.register(updateTrips);
 app.register(getTripDetails);
 app.register(getParticipant);
-app.register(deleteActivities);
 app.register(deleteLink);
 app.register(deleteTrip);
 app.register(deleteParticipant);
+
+// rotas de atividade
+app.register(createActivity);
+app.register(getActivity);
+app.register(deleteActivities);
 
 // iniciar o servidor
 app.listen({ port: env.PORT }).then(() => {
