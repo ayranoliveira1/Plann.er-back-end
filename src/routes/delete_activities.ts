@@ -9,6 +9,8 @@ export async function deleteActivities(app: FastifyInstance) {
       "/trips/:tripId/activities/:actvitiesId",
       {
          schema: {
+            description: "Delete an activity",
+            tags: ["Activity"],
             params: z.object({
                tripId: z.string().uuid(),
                actvitiesId: z.string().uuid(),

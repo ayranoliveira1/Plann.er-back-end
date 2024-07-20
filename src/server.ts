@@ -1,6 +1,7 @@
 import fastify from "fastify";
 import { createTrips } from "./routes/create_trips";
 import {
+   jsonSchemaTransform,
    serializerCompiler,
    validatorCompiler,
 } from "fastify-type-provider-zod";
@@ -22,6 +23,8 @@ import { deleteActivities } from "./routes/delete_activities";
 import { deleteLink } from "./routes/delete-links";
 import { deleteTrip } from "./routes/delete_trip";
 import { deleteParticipant } from "./routes/delete_participant";
+import fastifySwagger from "@fastify/swagger";
+import fastifySwaggerUi from "@fastify/swagger-ui";
 
 // exportar app com o fastify
 const app = fastify();
@@ -36,6 +39,26 @@ app.setErrorHandler(errorHandler);
 // configurar o validatorCompiler e serializerCompiler
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
+
+//configurar o Swagger
+
+app.register(fastifySwagger, {
+   swagger: {
+      consumes: ["application/json"],
+      produces: ["application/json"],
+      info: {
+         title: "Plan.ner API",
+         description: "Plan.ner é uma API para gerenciamento de viagens.",
+         version: "0.1.0",
+      },
+   },
+
+   transform: jsonSchemaTransform,
+});
+
+app.register(fastifySwaggerUi, {
+   routePrefix: "/docs",
+});
 
 // registrar as rotas
 app.register(createTrips);

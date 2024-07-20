@@ -9,6 +9,8 @@ export async function deleteLink(app: FastifyInstance) {
       "/trips/:tripId/links/:linkId",
       {
          schema: {
+            description: "Delete a link",
+            tags: ["Link"],
             params: z.object({
                tripId: z.string().uuid(),
                linkId: z.string().uuid(),

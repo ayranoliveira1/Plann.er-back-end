@@ -10,6 +10,8 @@ export async function comfirmParticipant(app: FastifyInstance) {
       "/participants/:partcipantId/confirm",
       {
          schema: {
+            description: "Confirm participant",
+            tags: ["Participant"],
             params: z.object({
                partcipantId: z.string().uuid(),
             }),
