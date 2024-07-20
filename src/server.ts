@@ -35,6 +35,7 @@ app.register(fastifyCors, {
    origin: "*",
 });
 
+// configurar o errorHandler
 app.setErrorHandler(errorHandler);
 
 // configurar o validatorCompiler e serializerCompiler
@@ -42,7 +43,6 @@ app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
 
 //configurar o Swagger
-
 app.register(fastifySwagger, {
    swagger: {
       consumes: ["application/json"],
@@ -61,19 +61,20 @@ app.register(fastifySwaggerUi, {
    routePrefix: "/docs",
 });
 
-// registrar as rotas
+// rotas de viagem
 app.register(createTrips);
 app.register(comfirmTrips);
+app.register(updateTrips);
+app.register(getTripDetails);
+app.register(deleteTrip);
+
 app.register(comfirmParticipant);
 app.register(createLink);
 app.register(getLinks);
 app.register(getParticipants);
 app.register(createInvite);
-app.register(updateTrips);
-app.register(getTripDetails);
 app.register(getParticipant);
 app.register(deleteLink);
-app.register(deleteTrip);
 app.register(deleteParticipant);
 
 // rotas de atividade

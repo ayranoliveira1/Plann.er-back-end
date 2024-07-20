@@ -1,12 +1,12 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
-import { prisma } from "../lib/prisma";
 import dayjs from "dayjs";
-import { getMailClinet } from "../lib/mail";
 import nodemailer from "nodemailer";
-import { ClientError } from "../erros/clientError";
-import { env } from "../env";
+import { prisma } from "../../lib/prisma";
+import { ClientError } from "../../erros/clientError";
+import { getMailClinet } from "../../lib/mail";
+import { env } from "../../env";
 
 export async function comfirmTrips(app: FastifyInstance) {
    app.withTypeProvider<ZodTypeProvider>().get(
