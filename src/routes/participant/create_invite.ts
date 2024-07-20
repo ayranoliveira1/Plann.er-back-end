@@ -1,12 +1,12 @@
 import { FastifyInstance } from "fastify";
-import { prisma } from "../lib/prisma";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
-import { getMailClinet } from "../lib/mail";
 import dayjs from "dayjs";
 import nodemailer from "nodemailer";
-import { ClientError } from "../erros/clientError";
-import { env } from "../env";
+import { prisma } from "../../lib/prisma";
+import { ClientError } from "../../erros/clientError";
+import { getMailClinet } from "../../lib/mail";
+import { env } from "../../env";
 
 export async function createInvite(app: FastifyInstance) {
    app.withTypeProvider<ZodTypeProvider>().post(

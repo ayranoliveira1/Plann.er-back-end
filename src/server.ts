@@ -68,14 +68,16 @@ app.register(updateTrips);
 app.register(getTripDetails);
 app.register(deleteTrip);
 
+// rotas de participante
 app.register(comfirmParticipant);
+app.register(getParticipants);
+app.register(getParticipant);
+app.register(deleteParticipant);
+
 app.register(createLink);
 app.register(getLinks);
-app.register(getParticipants);
 app.register(createInvite);
-app.register(getParticipant);
 app.register(deleteLink);
-app.register(deleteParticipant);
 
 // rotas de atividade
 app.register(createActivity);
