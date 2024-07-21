@@ -4,6 +4,7 @@
    "description": "",
    "main": "index.js",
    "scripts": {
+      "test": "jest",
       "dev": "tsx watch --env-file .env src/server.ts",
       "build": "tsup src --format esm",
       "start": "node dist/server.mjs"
@@ -12,11 +13,13 @@
    "author": "",
    "license": "ISC",
    "devDependencies": {
+      "@types/jest": "^29.5.12",
       "@types/node": "^20.14.10",
       "@types/nodemailer": "^6.4.15",
       "@types/supertest": "^6.0.2",
       "jest": "^29.7.0",
       "supertest": "^7.0.0",
+      "ts-jest": "^29.2.3",
       "tsx": "^4.16.2",
       "typescript": "^5.5.3"
    },
