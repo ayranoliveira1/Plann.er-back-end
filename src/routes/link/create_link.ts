@@ -33,6 +33,7 @@ export async function createLink(app: FastifyInstance) {
             throw new ClientError("Trip not found");
          }
 
+         // create links
          const linkRepository = new LinkRepository();
          const link = await linkRepository.create({
             title,

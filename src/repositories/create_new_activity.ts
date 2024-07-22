@@ -1,13 +1,13 @@
 import { prisma } from "../lib/prisma";
 
-interface ICreateParams {
+interface ICreateActivityParams {
    title: string;
    occurs_at: Date;
    trip_id: string;
 }
 
 export class ActivityRepository {
-   async create({ title, occurs_at, trip_id }: ICreateParams) {
+   async create({ title, occurs_at, trip_id }: ICreateActivityParams) {
       const activity = await prisma.activity.create({
          data: {
             title,

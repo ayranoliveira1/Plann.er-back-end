@@ -1,6 +1,6 @@
 import { prisma } from "../lib/prisma";
 
-interface ICreateParams {
+interface ICreateTripParams {
    destination: string;
    starts_at: Date;
    ends_at: Date;
@@ -17,7 +17,7 @@ export class TripRepository {
       owner_name,
       owner_email,
       emails_to_invite,
-   }: ICreateParams) {
+   }: ICreateTripParams) {
       const trip = await prisma.trip.create({
          data: {
             destination,
