@@ -7,7 +7,8 @@
       "test": "jest",
       "dev": "tsx watch --env-file .env src/server.ts",
       "build": "tsup src --format esm",
-      "start": "node dist/server.mjs"
+      "start": "node dist/server.js",
+      "vercel-build": "npx prisma migrate deploy"
    },
    "keywords": [],
    "author": "",
@@ -33,7 +34,8 @@
       "fastify-type-provider-zod": "^2.0.0",
       "nodemailer": "^6.9.14",
       "prisma": "^5.16.2",
-      "tsup": "^8.2.0",
+      "tsc": "^2.0.4",
+      "tsup": "^8.2.2",
       "zod": "^3.23.8"
    }
 }
