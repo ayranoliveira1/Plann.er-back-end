@@ -4,6 +4,7 @@ import { z } from "zod";
 import dayjs from "dayjs";
 import { prisma } from "../../lib/prisma";
 import { ClientError } from "../../erros/clientError";
+import { ActivityRepository } from "../../repositories/create_new_activity";
 
 export async function createActivity(app: FastifyInstance) {
    app.withTypeProvider<ZodTypeProvider>().post(
@@ -41,12 +42,12 @@ export async function createActivity(app: FastifyInstance) {
             throw new ClientError("Start date must be before trip end date");
          }
 
-         const activity = await prisma.activity.create({
-            data: {
-               title,
-               occurs_at,
-               trip_id: tripId,
-            },
+         // create activity
+         const activityRepository = new ActivityRepository();
+         const activity = await activityRepository.create({
+            title,
+            occurs_at,
+            trip_id: tripId,
          });
 
          return reply.status(201).send({ activitiesId: activity.id });
