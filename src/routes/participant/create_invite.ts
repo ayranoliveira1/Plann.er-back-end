@@ -7,6 +7,7 @@ import { prisma } from "../../lib/prisma";
 import { ClientError } from "../../erros/clientError";
 import { getMailClinet } from "../../lib/mail";
 import { env } from "../../env";
+import { ParticipantRepository } from "../../repositories/create_new_participant";
 
 export async function createInvite(app: FastifyInstance) {
    app.withTypeProvider<ZodTypeProvider>().post(
@@ -36,12 +37,12 @@ export async function createInvite(app: FastifyInstance) {
             throw new ClientError("Trip not found");
          }
 
-         const participant = await prisma.participant.create({
-            data: {
-               name,
-               email,
-               trip_id: tripId,
-            },
+         // create participant
+         const participantRepository = new ParticipantRepository();
+         const participant = await participantRepository.create({
+            name,
+            email,
+            trip_id: tripId,
          });
 
          const formattedStartDate = dayjs(trip.starts_at).format("DD/MM/YYYY");
