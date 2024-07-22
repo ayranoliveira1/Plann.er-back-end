@@ -58,7 +58,9 @@ export async function createTrips(app: FastifyInstance) {
 
          const formattedEndDate = dayjs(ends_at).format("DD/MM/YYYY");
 
-         const confirmationLink = `${env.API_BASE_URL}/trips/${trip.id}/confirm`;
+         const confirmationLink = `${
+            env.API_BASE_URL || "http://localhost:3333"
+         }/trips/${trip.id}/confirm`;
 
          const email = await getMailClinet();
 

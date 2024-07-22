@@ -42,7 +42,9 @@ export async function comfirmTrips(app: FastifyInstance) {
          }
 
          if (trip.is_confirmed) {
-            return reply.redirect(`${env.WEB_BASE_URL}/trips/${tripId}`);
+            return reply.redirect(
+               `${env.WEB_BASE_URL || "http://localhost:5173"}/trips/${tripId}`
+            );
          }
 
          await prisma.trip.update({
@@ -58,7 +60,9 @@ export async function comfirmTrips(app: FastifyInstance) {
 
          await Promise.all(
             trip.participants.map(async (participant) => {
-               const confirmationLink = `${env.API_BASE_URL}/participants/${participant.id}/confirm`;
+               const confirmationLink = `${
+                  env.API_BASE_URL || "http://localhost:3333"
+               }/participants/${participant.id}/confirm`;
 
                const message = await email.sendMail({
                   from: {

@@ -32,7 +32,9 @@ export async function comfirmParticipant(app: FastifyInstance) {
 
          if (participant.is_confirmed) {
             return reply.redirect(
-               `${env.WEB_BASE_URL}/trips/${participant.trip_id}`
+               `${env.WEB_BASE_URL || "http://localhost:5173"}/trips/${
+                  participant.trip_id
+               }`
             );
          }
 
@@ -42,7 +44,9 @@ export async function comfirmParticipant(app: FastifyInstance) {
          });
 
          return reply.redirect(
-            `${env.WEB_BASE_URL}/trips/${participant.trip_id}`
+            `${env.WEB_BASE_URL || "http://localhost:5173"}/trips/${
+               participant.trip_id
+            }`
          );
       }
    );
