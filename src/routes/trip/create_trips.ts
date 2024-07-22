@@ -1,5 +1,4 @@
 import { FastifyInstance } from "fastify";
-import { prisma } from "../../lib/prisma";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
 import dayjs from "dayjs";
@@ -7,6 +6,7 @@ import { getMailClinet } from "../../lib/mail";
 import nodemailer from "nodemailer";
 import { ClientError } from "../../erros/clientError";
 import { env } from "../../env";
+import { TripRepository } from "../../repositories/create_new_trip";
 
 export async function createTrips(app: FastifyInstance) {
    app.withTypeProvider<ZodTypeProvider>().post(
@@ -43,29 +43,17 @@ export async function createTrips(app: FastifyInstance) {
             throw new ClientError("End date must be after start date");
          }
 
-         const trip = await prisma.trip.create({
-            data: {
-               destination,
-               starts_at,
-               ends_at,
-               participants: {
-                  createMany: {
-                     data: [
-                        {
-                           name: owner_name,
-                           email: owner_email,
-                           is_owner: true,
-                           is_confirmed: true,
-                        },
-
-                        ...emails_to_invite.map((email) => {
-                           return { email };
-                        }),
-                     ],
-                  },
-               },
-            },
+         // create trip
+         const tripRepository = new TripRepository();
+         const trip = await tripRepository.create({
+            destination,
+            starts_at,
+            ends_at,
+            owner_name,
+            owner_email,
+            emails_to_invite,
          });
+
          const formattedStartDate = dayjs(starts_at).format("DD/MM/YYYY");
 
          const formattedEndDate = dayjs(ends_at).format("DD/MM/YYYY");
